@@ -1,6 +1,7 @@
 import logging
 # v1
 from urllib.parse import urlparse
+import urllib
 
 from django.conf import settings
 from social.backends.oauth import BaseOAuth2
@@ -46,8 +47,8 @@ class GenericOAuthBackend(BaseOAuth2):
     ID_KEY = CUSTOM_OAUTH_PARAMS.get('PROVIDER_ID_KEY')  # unique marker which could be taken from the SSO response
     USER_DATA_URL = CUSTOM_OAUTH_PARAMS.get('USER_DATA_URL')  # '/api/current-user/' some url similar to the example
 
-    AUTHORIZATION_URL = urlparse.urljoin(PROVIDER_URL, AUTHORIZE_URL)
-    ACCESS_TOKEN_URL = urlparse.urljoin(PROVIDER_URL, GET_TOKEN_URL)
+    AUTHORIZATION_URL = urllib.parse.urljoin(PROVIDER_URL, AUTHORIZE_URL)
+    ACCESS_TOKEN_URL = urllib.parse.urljoin(PROVIDER_URL, GET_TOKEN_URL)
     DEFAULT_SCOPE = settings.FEATURES.get('SCOPE')  # extend the scope of the provided permissions.
     REDIRECT_STATE = False
     ACCESS_TOKEN_METHOD = 'POST'  # default method is 'GET'
@@ -105,7 +106,7 @@ class GenericOAuthBackend(BaseOAuth2):
         Grab user profile information from SSO.
         """
         data = self.get_json(
-            urlparse.urljoin(self.PROVIDER_URL, self.USER_DATA_URL),
+            urllib.parse.urljoin(self.PROVIDER_URL, self.USER_DATA_URL),
             params={'access_token': access_token},
         )
         data['access_token'] = access_token
