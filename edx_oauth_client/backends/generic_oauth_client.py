@@ -1,5 +1,5 @@
 import logging
-urllib.parse import urlparse
+from urllib.parse import urlparse
 
 from django.conf import settings
 from social.backends.oauth import BaseOAuth2
