@@ -5,7 +5,7 @@ from django.conf import settings
 from social.backends.oauth import BaseOAuth2
 from social.utils import handle_http_errors
 
-import third_party_auth
+from common.djangoapps import third_party_auth
 
 log = logging.getLogger(__name__)
 
