@@ -1,6 +1,5 @@
 import logging
 # v1
-from urllib.parse import urlparse
 import urllib
 
 from django.conf import settings
