@@ -48,7 +48,8 @@ class GenericOAuthBackend(BaseOAuth2):
 
     AUTHORIZATION_URL = urllib.parse.urljoin(PROVIDER_URL, AUTHORIZE_URL)
     ACCESS_TOKEN_URL = urllib.parse.urljoin(PROVIDER_URL, GET_TOKEN_URL)
-    DEFAULT_SCOPE = settings.FEATURES.get('SCOPE')  # extend the scope of the provided permissions.
+    # DEFAULT_SCOPE = settings.FEATURES.get('SCOPE')  # extend the scope of the provided permissions.
+    DEFAULT_SCOPE = ['openid']
     REDIRECT_STATE = False
     ACCESS_TOKEN_METHOD = 'POST'  # default method is 'GET'
 
@@ -74,6 +75,7 @@ class GenericOAuthBackend(BaseOAuth2):
         return super(GenericOAuthBackend, self).setting(name, default=default)
 
     def get_user_details(self, response):
+        print('GGWP get_user_details')
         """
         Return user details from SSO account.
         """
@@ -81,6 +83,7 @@ class GenericOAuthBackend(BaseOAuth2):
 
     @handle_http_errors
     def do_auth(self, access_token, *args, **kwargs):
+        print('GGWP do_auth')
         """
         Finish the auth process once the access_token was retrieved.
         """
@@ -92,6 +95,7 @@ class GenericOAuthBackend(BaseOAuth2):
 
     @handle_http_errors
     def auth_complete(self, *args, **kwargs):
+        print('GGWP auth_complete')
         """
         Complete loging process, must return user instance.
         """
