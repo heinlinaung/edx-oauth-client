@@ -83,10 +83,11 @@ class GenericOAuthBackend(BaseOAuth2):
 
     @handle_http_errors
     def do_auth(self, access_token, *args, **kwargs):
-        print('GGWP do_auth')
+        print('GGWP do_auth v2')
         """
         Finish the auth process once the access_token was retrieved.
         """
+        print('GGWP do_auth data',data)
         data = self.user_data(access_token)
         if data is not None and 'access_token' not in data:
             data['access_token'] = access_token
