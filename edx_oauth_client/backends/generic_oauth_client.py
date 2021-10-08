@@ -80,6 +80,7 @@ class GenericOAuthBackend(BaseOAuth2):
         Return user details from SSO account.
         """
         return {'username': response.get('sub'),
+                'name': response.get('sub'),
                 'email': response.get('email') or '',
                 'first_name': response.get('given_name'),
                 'last_name': response.get('family_name')}
