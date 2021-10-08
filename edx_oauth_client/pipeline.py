@@ -1,7 +1,7 @@
 from logging import getLogger
 
 from django.contrib.auth.models import User
-from social_core.pipeline.partial import partial
+from social_core.pipeline import partial
 from openedx.core.djangoapps.user_authn.views.register import create_account_with_params
 # from common.djangoapps import third_party_auth
 # from third_party_auth.pipeline import (AuthEntryError, make_random_password)
@@ -9,7 +9,7 @@ from openedx.core.djangoapps.user_authn.views.register import create_account_wit
 
 log = getLogger(__name__)
 
-
+@partial.partial
 def ensure_user_information(
         strategy, auth_entry, backend=None, user=None, social=None, allow_inactive_user=False, *args, **kwargs
 ):
