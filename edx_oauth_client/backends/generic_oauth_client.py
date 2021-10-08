@@ -79,7 +79,10 @@ class GenericOAuthBackend(BaseOAuth2):
         """
         Return user details from SSO account.
         """
-        return response
+        return {'username': response.get('sub'),
+                'email': response.get('email') or '',
+                'first_name': response.get('given_name'),
+                'last_name': response.get('family_name')}
 
     @handle_http_errors
     def do_auth(self, access_token, *args, **kwargs):
