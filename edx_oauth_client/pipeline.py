@@ -30,11 +30,11 @@ def ensure_user_information(
         country = user_data.get('country')
         if not country:
             log.info('No country in response.')
-
+        print('GGWP mappppp user_data')
         # Received fields could be pretty different from the expected, mandatory are only 'username' and 'email'
-        data['username'] = user_data.get('username', user_data.get('name'))
-        data['first_name'] = user_data.get('firstName', user_data.get('first_name'))
-        data['last_name'] = user_data.get('lastName', user_data.get('last_name'))
+        data['username'] = user_data.get('name')
+        data['first_name'] = user_data.get('given_name')
+        data['last_name'] = user_data.get('family_name')
         data['email'] = user_data.get('email')
         data['country'] = country
         data['access_token'] = access_token
