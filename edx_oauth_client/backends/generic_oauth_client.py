@@ -107,6 +107,8 @@ class GenericOAuthBackend(BaseOAuth2):
 
     def user_data(self, access_token, *args, **kwargs):
         print('GGWP user_data')
+        print(f' Args: {args}' )
+        print(f' Kwargs: {kwargs}' )
         print('GGWP user_data access_token',access_token)
         """
         Grab user profile information from SSO.
