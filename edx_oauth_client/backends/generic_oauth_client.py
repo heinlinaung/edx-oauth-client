@@ -49,7 +49,7 @@ class GenericOAuthBackend(BaseOAuth2):
     AUTHORIZATION_URL = urllib.parse.urljoin(PROVIDER_URL, AUTHORIZE_URL)
     ACCESS_TOKEN_URL = urllib.parse.urljoin(PROVIDER_URL, GET_TOKEN_URL)
     # DEFAULT_SCOPE = settings.FEATURES.get('SCOPE')  # extend the scope of the provided permissions.
-    DEFAULT_SCOPE = ['openid']
+    DEFAULT_SCOPE = ['openid','profile','email']
     REDIRECT_STATE = False
     ACCESS_TOKEN_METHOD = 'POST'  # default method is 'GET'
 
