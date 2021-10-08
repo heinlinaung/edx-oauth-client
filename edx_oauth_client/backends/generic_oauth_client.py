@@ -87,7 +87,7 @@ class GenericOAuthBackend(BaseOAuth2):
         """
         Finish the auth process once the access_token was retrieved.
         """
-        data = self.user_data(access_token)
+        data = self.user_data(access_token, *args, **kwargs)
         print('GGWP do_auth data',data)
         if data is not None and 'access_token' not in data:
             data['access_token'] = access_token
@@ -117,12 +117,14 @@ class GenericOAuthBackend(BaseOAuth2):
         return data
 
     def pipeline(self, pipeline, pipeline_index=0, *args, **kwargs):
+        print('GGWP pipeline')
         self.strategy.session.setdefault('auth_entry', 'register')
         return super(GenericOAuthBackend, self).pipeline(
             pipeline=self.PIPELINE, *args, **kwargs
         )
 
     def get_user_id(self, details, response):
+        print('GGWP get_user_id')
         """
         Return a unique ID for the current user, by default from server response.
         """
