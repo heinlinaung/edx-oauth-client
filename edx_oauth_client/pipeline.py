@@ -10,7 +10,6 @@ from openedx.core.djangoapps.user_authn.views.register import create_account_wit
 log = getLogger(__name__)
 
 
-@partial.partial
 def ensure_user_information(
         strategy, auth_entry, backend=None, user=None, social=None, allow_inactive_user=False, *args, **kwargs
 ):
