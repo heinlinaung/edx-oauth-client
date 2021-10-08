@@ -44,9 +44,6 @@ def ensure_user_information(
             data['name'] = '{} {}'.format(['first_name'], data['last_name']).strip()
         else:
             data['name'] = user_data.get('username')
-    except AuthEntryError as e:
-        log.exception(e)
-        raise
     except Exception as e:
         log.exception(e)
 
