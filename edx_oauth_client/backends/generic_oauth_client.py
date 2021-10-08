@@ -113,8 +113,14 @@ class GenericOAuthBackend(BaseOAuth2):
         """
         Grab user profile information from SSO.
         """
-        data = self.get_json('https://dev-973880.okta.com/oauth2/v1/userinfo',params={'access_token': access_token})
+        header = {"Authorization": "Bearer %s" % access_token}
+        data = self.get_json('https://dev-973880.okta.com/oauth2/v1/userinfo', headers=header)
+        print('GGWP user_data A')
         print('GGWP user_data data',data)
+        # data = self.get_json(
+        #     urllib.parse.urljoin(self.PROVIDER_URL, self.USER_DATA_URL),
+        #     params={'access_token': access_token},
+        # )
         data['access_token'] = access_token
         return data
 
