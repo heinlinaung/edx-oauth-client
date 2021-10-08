@@ -2,7 +2,7 @@ from logging import getLogger
 
 from django.contrib.auth.models import User
 from social_core.pipeline.partial import partial
-from student.views import create_account_with_params, reactivation_email_for_user
+from common.djangoapps.student.views import create_account_with_params
 # from common.djangoapps import third_party_auth
 # from third_party_auth.pipeline import (AuthEntryError, make_random_password)
 # from common.djangoapps.third_party_auth.pipeline import (AuthEntryError, make_random_password)
